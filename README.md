@@ -1,4 +1,4 @@
-# Coreloops – Take-home - AI Engineer
+# Coreloops - Take-home - AI Engineer
 
 **Estimated time:** ~4 hours  
 **Language:** Python preferred (TypeScript/Node.js also acceptable).  
@@ -22,11 +22,11 @@ Your task is to build a **small, production-minded data + ML pipeline** that:
 3. **Aggregates** the data into **daily per-customer metrics**, including at minimum:
     - `date`
     - `customer_id`
-    - `orders` – count of distinct invoices
-    - `items` – sum of absolute quantities
-    - `gross_gbp` – sum of `quantity * unit_price` in GBP for positive quantities
-    - `returns_gbp` – sum for negative quantities
-    - `net_gbp` – gross + returns
+    - `orders` - count of distinct invoices
+    - `items` - sum of absolute quantities
+    - `gross_gbp` - sum of `quantity * unit_price` in GBP for positive quantities
+    - `returns_gbp` - sum for negative quantities
+    - `net_gbp` - gross + returns
 4. **Trains** a simple model to **predict next-day `net_gbp` per customer**.
     - You decide which features to use (e.g. rolling averages, category proportions, recency).
     - Provide a clear **train/validation** strategy (time-based split preferred).
@@ -34,12 +34,22 @@ Your task is to build a **small, production-minded data + ML pipeline** that:
 5. **Outputs**:
     - `artifacts/daily_customer_metrics.parquet` (or `.csv`)
     - `artifacts/model/` containing saved model parameters or reproducible configuration
-    - A small CLI command, for example:
+    - A small CLI command which returns a predicted `net_gbp` value for that date, for example:
       ```bash
+      # Node.js
       pnpm run predict -- --customer C00042 --date 2024-10-06
       ```
-      which returns a predicted `net_gbp` value for that date.
-
+      or
+      ```bash
+      # Python
+      python -m scripts.predict --customer C00042 --date 2024-10-06
+      ```
+      or
+      ```bash
+      # Docker
+      docker build -t coreloops-predict .
+      docker run coreloops-predict --customer C00042 --date 2024-10-06
+      ```
 ---
 
 ## Data
@@ -51,8 +61,8 @@ Accessible via HTTPS as: `https://storage.googleapis.com/tech-test-file-storage/
 
 Structure:
 
-- `data/*` – daily files to be used for ingestion
-- `fx_rates.csv` – the daily FX conversion rates
+- `data/*` - daily files to be used for ingestion
+- `fx_rates.csv` - the daily FX conversion rates
 
 **Example URL:**
 `https://storage.googleapis.com/tech-test-file-storage/data/2024-10-01.csv`
@@ -63,9 +73,9 @@ Structure:
 
 A single repo or folder containing:
 
-- `src/` – ETL, transformation, and feature engineering code
-- `scripts/` – CLI entry points
-- `README.md` – clear run instructions, assumptions, and design notes
+- `src/` - ETL, transformation, and feature engineering code
+- `scripts/` - CLI entry points
+- `README.md` - clear run instructions, assumptions, and design notes
 - *(Optional)* lightweight unit or data validation tests
 
 ---
