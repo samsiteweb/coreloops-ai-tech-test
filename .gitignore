@@ -1,110 +1,57 @@
-# ------------------------------------------------------------
-# Coreloops Tech Test .gitignore
-# Covers: Python + Node.js (pnpm) + IDEs + Local Artifacts
-# ------------------------------------------------------------
-
-# === GENERAL ===
-.DS_Store
-*.log
-*.tmp
-*.swp
-*.lock
-*.bak
-*.orig
-
-# === NODE / PNPM ===
-node_modules/
-.pnpm-store/
-.npm/
-npm-debug.log*
-pnpm-debug.log*
-package-lock.json
-.pnp.*
-.env
-.env.*.local
-dist/
-build/
-coverage/
-.next/
-out/
-
-# === PYTHON ===
+# Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-*.pdb
-*.egg-info/
-.eggs/
+*$py.class
+*.so
+.Python
 build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
 venv/
-.venv/
 env/
 ENV/
-.ipynb_checkpoints/
-*.ipynb_checkpoint
-.pytest_cache/
-.tox/
-.mypy_cache/
-coverage.xml
-htmlcov/
-.cache/
-*.coverage
-*.cover
-*.py,cover
-*.spec
-celerybeat-schedule
-celerybeat.pid
+.venv
 
-# === DATA / ARTIFACTS ===
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
 artifacts/
+data/
 *.parquet
 *.csv
-*.xlsx
-*.db
-*.sqlite
-data/
-*.gz
-*.zip
-*.tar
-*.tgz
+*.pkl
+*.joblib
 
-# === IDE / OS ===
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
 
-# === TESTING / GRADING ===
-grading*
-__grading__/
-*.grade.json
-*.result.json
+# Logs
+*.log
 
-# === MISC ===
-# Ignore generated diagrams, notebooks, and temp runs
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
-*.pdf
-notebooks/
-sandbox/
-tmp/
-local/
-*.local.json
-*.cache
+# Model files
+*.txt
+!requirements.txt
 
-# === SECURITY ===
-# Ignore secrets and tokens
-*.pem
-*.key
-*.crt
-*.cert
-.env.*
-.envrc
+# Data exploration
+exploration/

@@ -1,0 +1,48 @@
+# Data Sources
+data:
+  gcs_base_url: "https://storage.googleapis.com/tech-test-file-storage"
+  fx_rates_file: "fx_rates.csv"
+  transactions_folder: "data"
+  local_data_dir: "data"
+  
+# Output paths
+output:
+  artifacts_dir: "artifacts"
+  metrics_file: "artifacts/daily_customer_metrics.parquet"
+  model_dir: "artifacts/model"
+  
+# Data Processing
+processing:
+  deduplication_columns:
+    - invoice_id
+    - product_id
+    - quantity
+    - unit_price
+    - customer_id
+    - timestamp
+  imputation_window_days: 7
+  
+# Feature Engineering
+features:
+  rolling_windows: [7, 14, 30]
+  lag_days: [1, 7]
+  min_history_days: 2
+  
+# Model Training
+model:
+  type: "RandomForestRegressor"
+  random_state: 42
+  test_size: 0.15
+  validation_size: 0.15
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10
+    min_samples_split: 5
+    min_samples_leaf: 2
+    n_jobs: -1
+  
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
